@@ -25,16 +25,19 @@ const people = {
 const ageCheck = () => {
   getResult.addEventListener("click", (e) => {
     if (!masculino.checked && !feminino.checked)
-      alert("check at least one of the options");
-    if (!birthYear || birthYear > year)
-      alert("Erro. Digite um ano válido");
+      return alert("check at least one of the options");
+    if (!birthYear.value || birthYear.value >= year)
+      return alert("Erro. Digite um ano válido");
     const age = year - birthYear.value;
     getGenreAndAge(age);
   });
 };
 
 const getGenreAndAge = (age) => {
-  if (masculino.checked && feminino.checked) alert("select only one genre");
+  if (masculino.checked && feminino.checked) {
+    alert('select only one genre');
+    return;
+  }
   let num = 0;
   if (age > 13 && age < 23) {
     num = 1;
