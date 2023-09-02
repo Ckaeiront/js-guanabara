@@ -22,28 +22,26 @@ const people = {
   ],
 };
 
-const eventHandler = function(e) {
+const eventHandler = function () {
   if (!masculino.checked && !feminino.checked)
-      return alert("check at least one of the options");
-    if (!birthYear.value || birthYear.value >= year)
-      return alert("Erro. Digite um ano válido");
-    const age = year - birthYear.value;
-    getGenreAndAge(age);
+    return alert("check at least one of the options");
+  if (!birthYear.value || birthYear.value >= year)
+    return alert("Erro. Digite um ano válido");
+  const age = year - birthYear.value;
+  getGenreAndAge(age);
 };
 
 const ageCheck = () => {
   getResult.addEventListener("click", eventHandler);
-  window.addEventListener('keydown', (e) => {
+  window.addEventListener("keydown", (e) => {
     console.log(e);
     if (e.keyCode === 13) eventHandler();
   });
 };
 
 const getGenreAndAge = (age) => {
-  if (masculino.checked && feminino.checked) {
-    alert('select only one genre');
-    return;
-  }
+  if (masculino.checked && feminino.checked)
+    return alert("select only one genre");
   let num = 0;
   if (age > 13 && age < 23) {
     num = 1;
@@ -55,9 +53,9 @@ const getGenreAndAge = (age) => {
     num = num;
   }
   if (masculino.checked) {
-    setImageAndText(people.men[num], age, 'homem');
+    setImageAndText(people.men[num], age, "homem");
   } else {
-    setImageAndText(people.women[num], age, 'mulher');
+    setImageAndText(people.women[num], age, "mulher");
   }
 };
 
