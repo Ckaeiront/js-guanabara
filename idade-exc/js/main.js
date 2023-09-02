@@ -22,14 +22,20 @@ const people = {
   ],
 };
 
-const ageCheck = () => {
-  getResult.addEventListener("click", (e) => {
-    if (!masculino.checked && !feminino.checked)
+const eventHandler = function(e) {
+  if (!masculino.checked && !feminino.checked)
       return alert("check at least one of the options");
     if (!birthYear.value || birthYear.value >= year)
       return alert("Erro. Digite um ano válido");
     const age = year - birthYear.value;
     getGenreAndAge(age);
+};
+
+const ageCheck = () => {
+  getResult.addEventListener("click", eventHandler);
+  window.addEventListener('keydown', (e) => {
+    console.log(e);
+    if (e.keyCode === 13) eventHandler();
   });
 };
 
